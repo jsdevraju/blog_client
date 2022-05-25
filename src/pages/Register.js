@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Loader } from "../components";
 import registerImage from "../img/undraw_secure_login_pdn4.png";
 
 const Register = () => {
@@ -42,6 +43,8 @@ const Register = () => {
       setLoading(false);
     }
   };
+
+  if(loading) return <Loader />
 
   return (
     <>

@@ -31,7 +31,7 @@ const BlogSingleDetails = () => {
   const shareUrl = document.URL;
   const { id } = useParams();
   const [postId, setPostId] = useState(id);
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   //Change Document Title
   document.title = `Jsdev Blog - Blog Details Posted By - ${singlePost?.author?.username}`;
 
@@ -86,7 +86,7 @@ const BlogSingleDetails = () => {
   const handleLike = async () => {
     if (!singlePost?.reactBy.includes(user?._id)) {
       try {
-        const { data } = await axios.get(
+        const {data} = await axios.get(
           `${process.env.REACT_APP_PROXY}/add-react/${postId}/${user?._id}`,
           {
             headers: {
@@ -96,14 +96,15 @@ const BlogSingleDetails = () => {
             credentials: true,
           }
         );
-        console.log(data);
+          setLoading(false);
+          dispatch(getSinglePost(data))
       } catch (error) {
         setLoading(false);
         return toast.error(error.message);
       }
     } else {
       try {
-        const { data } = await axios.delete(
+        await axios.delete(
           `${process.env.REACT_APP_PROXY}/remove-react/${postId}/${user?._id}`,
           {
             headers: {
@@ -113,7 +114,6 @@ const BlogSingleDetails = () => {
             credentials: true,
           }
         );
-        console.log(data);
       } catch (error) {
         setLoading(false);
         return toast.error(error.message);
@@ -142,17 +142,19 @@ const BlogSingleDetails = () => {
               <p>{moment(singlePost?.createAt).format("h:mm:ss a")}</p>
             </div>
             <div className="like_comment">
-              <p>Like: {singlePost?.reactBy.length}</p>
+              <p>Like: {singlePost?.reactBy?.length}</p>
               <p>Comment: {singlePost?.comments.length}</p>
             </div>
             <div className="liked">
-              <button className="app_btn btn_fill" onClick={handleLike}>
-                {singlePost?.reactBy.includes(user?._id) ? (
-                  <FcLike size={30} />
-                ) : (
-                  <FcDislike size={30} />
-                )}
-              </button>
+              {!token ? null : (
+                <button className="app_btn btn_fill" onClick={handleLike}>
+                  {singlePost?.reactBy.includes(user?._id) ? (
+                    <FcLike size={30} />
+                  ) : (
+                    <FcDislike size={30} />
+                  )}
+                </button>
+              )}
             </div>
             <h1 className="title">{singlePost?.title}</h1>
             <div className="description">
@@ -182,27 +184,29 @@ const BlogSingleDetails = () => {
                 </TelegramShareButton>
               </div>
             </div>
-            <div className="comment_box">
-              <div className="user_img">
-                <img src={user?.avatar} alt={user?.username} />
+            {!token ? null : (
+              <div className="comment_box">
+                <div className="user_img">
+                  <img src={user?.avatar} alt={user?.username} />
+                </div>
+                {/* COmment Area */}
+                <div className="comment_section">
+                  <form onSubmit={handleComment}>
+                    <textarea
+                      placeholder="Enter your comment"
+                      id=""
+                      cols="30"
+                      rows="10"
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                    />
+                    <button type="submit" className="app_btn btn_trans">
+                      Submit
+                    </button>
+                  </form>
+                </div>
               </div>
-              {/* COmment Area */}
-              <div className="comment_section">
-                <form onSubmit={handleComment}>
-                  <textarea
-                    placeholder="Enter your comment"
-                    id=""
-                    cols="30"
-                    rows="10"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                  />
-                  <button type="submit" className="app_btn btn_trans">
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
+            )}
             {/* Render Every Single Comment */}
             <div className="comment_main">
               {singlePost?.comments &&
