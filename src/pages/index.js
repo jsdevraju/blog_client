@@ -1,0 +1,13 @@
+export {default as Home} from './Home';
+export {default as Login} from './Login';
+export {default as Register} from './Register';
+export {default as Footer} from './Footer';
+export {default as CreateBlog} from './CreateBlog';
+export {default as ResetPassword} from './ResetPassword';
+export {default as Profile} from './Profile';
+export {default as UpdateProfile} from './UpdateProfile';
+export {default as VerifyPassword} from './VerifyPassword';
+export {default as ChangePassword} from './ChangePassword';
+export {default as UpdatePassword} from './UpdatePassword';
+export {default as BlogSingleDetails} from './BlogSingleDetails';
+export {default as UpdateBlog} from './UpdateBlog';
