@@ -16,6 +16,7 @@ import {
   UpdatePassword,
   BlogSingleDetails,
   UpdateBlog,
+  NotFound,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -75,6 +76,7 @@ const App = () => {
               </ProtectedRoutes>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>

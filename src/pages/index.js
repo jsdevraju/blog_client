@@ -11,3 +11,4 @@ export {default as ChangePassword} from './ChangePassword';
 export {default as UpdatePassword} from './UpdatePassword';
 export {default as BlogSingleDetails} from './BlogSingleDetails';
 export {default as UpdateBlog} from './UpdateBlog';
+export {default as NotFound} from './NotFound';

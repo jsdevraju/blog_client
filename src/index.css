@@ -659,8 +659,9 @@ h3.author {
 .fileUpload {
   margin-top: 2em;
 }
-.active a{
-  color: var(--green-color) !important; 
+
+.active a {
+  color: var(--green-color) !important;
 }
 
 @media (max-width: 768px) {
@@ -733,6 +734,19 @@ h3.author {
     align-items: center;
     justify-content: center;
   }
+}
+
+.not_found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.not_found img {
+  width: 50%;
 }
 
 /* Media Css */
