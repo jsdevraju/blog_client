@@ -14,7 +14,7 @@ export const blogSlice = createSlice({
         },
         getSinglePost:(state, {payload}) =>{
             return {...state, singlePost:payload}
-        },
+        }
 
     }
 })

@@ -16,7 +16,7 @@ import {
   RedditIcon,
 } from "react-share";
 import { useDispatch, useSelector } from "react-redux";
-import { getSinglePost } from "../features/blogSlice";
+import { getSinglePost, setLike } from "../features/blogSlice";
 import { toast } from "react-toastify";
 import { Comment, Loader } from "../components";
 import moment from "moment";
@@ -97,7 +97,7 @@ const BlogSingleDetails = () => {
           }
         );
           setLoading(false);
-          dispatch(getSinglePost(data))
+          dispatch(getSinglePost(data));
       } catch (error) {
         setLoading(false);
         return toast.error(error.message);

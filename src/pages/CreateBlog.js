@@ -146,7 +146,7 @@ const CreateBlog = () => {
                   placeholder="Enter your blog description..."
                 />
               </div>
-              <div className="from_control">
+              <div className="from_control handle">
                 {img ? (
                   <img
                     src={img}

@@ -658,6 +658,15 @@ h3.author {
 
 .fileUpload {
   margin-top: 2em;
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .active a {

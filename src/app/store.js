@@ -10,6 +10,7 @@ const store = configureStore({
     user: userInfoSlice,
     blog: blogSlice,
   },
+  devTools: process.env.NODE_ENV !== 'production',
 });
 //State Provider To Provide store state in our application
 const StoreProvider = ({children}) => {

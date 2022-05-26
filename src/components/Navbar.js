@@ -53,7 +53,7 @@ const Navbar = () => {
               <ul className={showMenu ? "active" : "nav_item"}>
                 {token ? (
                   <>
-                    <li className="active">
+                    <li>
                       <Link to="/">Home</Link>
                     </li>
                     <li>

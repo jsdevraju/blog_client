@@ -21,15 +21,12 @@ import {
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./privetRoutes/ProctedRoutes";
-import Bounce from "react-reveal/Bounce";
 
 const App = () => {
   return (
     <>
       <Router>
-        <Bounce top>
           <Navbar />
-        </Bounce>
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
